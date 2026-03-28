@@ -1,0 +1,22 @@
+@import "reset.css";
+@import "layout.css";
+@import "animation.css";
+@import "adaptive.css";
+
+@font-face {
+  font-family: "CloudeRegular";
+  src: url("../fonts/Cloude_Regular_1.02.otf") format("opentype"),
+       url("../fonts/Cloude_Regular_1.02.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "CloudeRegular";
+  src: url("../fonts/Cloude_Regular_Bold_1.02.otf") format("opentype"),
+       url("../fonts/Cloude_Regular_Bold_1.02.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}

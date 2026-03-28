@@ -1,0 +1,313 @@
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes robotDrop {
+  0% {
+    transform: translateX(var(--robot-tx, 0px)) translateY(var(--robot-drop-y, -300px)) scaleX(var(--robot-scale-x, 1)) scale(1.1);
+    opacity: 0;
+  }
+  60% {
+    transform: translateX(var(--robot-tx, 0px)) translateY(8px) scaleX(var(--robot-scale-x, 1)) scale(1.1);
+    opacity: 1;
+  }
+  80% {
+    transform: translateX(var(--robot-tx, 0px)) translateY(-4px) scaleX(var(--robot-scale-x, 1)) scale(1.1);
+  }
+  100% {
+    transform: translateX(var(--robot-tx, 0px)) translateY(0px) scaleX(var(--robot-scale-x, 1)) scale(1.1);
+  }
+}
+
+#walker-robot:not(.is-dropping):not(.robots__illustration-robot--walking) {
+  transform: translateX(var(--robot-tx, 0px)) scaleX(var(--robot-scale-x, 1)) scale(1.1);
+}
+
+#walker-robot:not(.is-dropping).robots__illustration-robot--walking {
+  transform: translateX(var(--robot-tx, 0px)) scaleX(var(--robot-scale-x, 1));
+}
+
+#walker-robot.is-dropping {
+  animation: robotDrop 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.poster__robot-row--4 .poster__robot-group:nth-child(1) {
+  animation: there_here 8s infinite linear;
+}
+
+.poster__robot-row--4 .poster__robot-group:nth-child(2) {
+  animation: there_here1_flipped 8s infinite linear;
+}
+
+.poster__robot-row--6 .poster__robot-group:nth-child(1) {
+  animation: there_here 8s infinite linear;
+}
+
+.poster__robot-row--6 .poster__robot-group:nth-child(2) {
+  animation: there_here1_flipped 8s infinite linear;
+}
+
+@keyframes there_here {
+  0% {
+    transform: translateX(0%) scaleX(1);
+  }
+  49.9% {
+    transform: translateX(calc(100vw - 100%)) scaleX(1);
+  }
+  50% {
+    transform: translateX(calc(100vw - 100%)) scaleX(-1);
+  }
+  99.9% {
+    transform: translateX(0%) scaleX(-1);
+  }
+  100% {
+    transform: translateX(0%) scaleX(1);
+  }
+}
+
+@keyframes there_here1_flipped {
+  0% {
+    transform: translateX(calc(100vw - 100%)) scaleX(-1);
+  }
+  49.9% {
+    transform: translateX(0%) scaleX(-1);
+  }
+  50% {
+    transform: translateX(0%) scaleX(1);
+  }
+  99.9% {
+    transform: translateX(calc(100vw - 100%)) scaleX(1);
+  }
+  100% {
+    transform: translateX(calc(100vw - 100%)) scaleX(-1);
+  }
+}
+
+.poster__robot-group:nth-child(1) { left: 0; }
+.poster__robot-group:nth-child(2) { left: 0; }
+
+@keyframes envelopeFadeOut {
+  from { opacity: 1; transform: scale(1) rotate(var(--rot, 0deg)); }
+  to   { opacity: 0; transform: scale(1.3) rotate(var(--rot, 0deg)); }
+}
+
+@keyframes envelopeMiss {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+
+@keyframes particleBurst {
+  0%   { opacity: 1; transform: translate(0, 0) scale(1); }
+  60%  { opacity: 1; }
+  100% { opacity: 0; transform: translate(var(--dx), var(--dy)) scale(0); }
+}
+
+.envelope-item {
+  position: absolute;
+  object-fit: contain;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.envelope-item.envelope-caught {
+  animation: envelopeFadeOut 0.35s ease forwards;
+}
+
+.envelope-item.envelope-missed {
+  animation: envelopeMiss 0.5s ease forwards;
+}
+
+.envelope-particle {
+  position: absolute;
+  width: var(--size, 6px);
+  height: var(--size, 6px);
+  background-color: var(--color, #000);
+  border-radius: 50%;
+  z-index: 6;
+  pointer-events: none;
+  animation: particleBurst var(--dur, 0.7s) ease-out forwards;
+}
+
+@keyframes robotBlink {
+  0%, 100% { opacity: 1; }
+  25%       { opacity: 0.15; }
+  50%       { opacity: 1; }
+  75%       { opacity: 0.15; }
+}
+
+#walker-robot.is-blinking {
+  animation: robotBlink 0.5s ease;
+}
+
+@keyframes gameResultIn {
+  from { opacity: 0; transform: translate(-50%, -50%) scale(0.9); }
+  to   { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}
+
+@keyframes nevezez_animation1 {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(100%); }
+}
+
+@keyframes nevezez_animation2 {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(0%); }
+}
+
+@keyframes running-animation2 {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-100%); }
+}
+
+@keyframes running-animation3 {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(0%); }
+}
+
+.robots__game-result {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: max-content;
+  max-width: 90%;
+  text-align: center;
+  font-family: "CloudeRegular", sans-serif;
+  font-size: 10.5vw;
+  color: #000;
+  line-height: 1;
+  z-index: 10;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.robots__game-result.is-visible {
+  animation: gameResultIn 0.5s ease forwards;
+}
+
+@keyframes roboWalk {
+  0% { background-position-x: 0; }
+  25% { background-position-x: 20%; }
+  50% { background-position-x: 40%; }
+  75% { background-position-x: 60%; }
+}
+
+@keyframes roboMoveX {
+  0% {
+    margin-left: -1.85%;
+    animation-timing-function: linear;
+  }
+  7% {
+    margin-left: 5.25%;
+    animation-timing-function: linear;
+  }
+  21% {
+    margin-left: 22%;
+    animation-timing-function: linear;
+  }
+  22% {
+    margin-left: 22%;
+    animation-timing-function: linear;
+  }
+  100% {
+    margin-left: 100%;
+  }
+}
+
+@keyframes roboMoveY {
+  0% {
+    transform: translateY(0);
+    animation-timing-function: linear;
+  }
+  7% {
+    transform: translateY(0);
+    animation-timing-function: ease-out;
+  }
+  11% {
+    transform: translateY(-114%);
+    animation-timing-function: ease-in;
+  }
+  21% {
+    transform: translateY(0);
+    animation-timing-function: linear;
+  }
+  22% {
+    transform: translateY(0);
+    animation-timing-function: ease-out;
+  }
+  32% {
+    transform: translateY(-100%);
+    animation-timing-function: ease-in;
+  }
+  46% {
+    transform: translateY(0);
+    animation-timing-function: linear;
+  }
+  47% {
+    transform: translateY(0);
+    animation-timing-function: ease-out;
+  }
+  55% {
+    transform: translateY(-108%);
+    animation-timing-function: ease-in;
+  }
+  69% {
+    transform: translateY(0);
+    animation-timing-function: linear;
+  }
+  70% {
+    transform: translateY(0);
+    animation-timing-function: ease-out;
+  }
+  79% {
+    transform: translateY(-125%);
+    animation-timing-function: ease-in;
+  }
+  93% {
+    transform: translateY(0);
+    animation-timing-function: linear;
+  }
+  95% {
+    transform: translateY(0);
+    animation-timing-function: linear;
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes clockIllustrationPulse {
+  0% {
+    transform: scale(0.8);
+  }
+  50% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0.8);
+  }
+}
+
+.clock__illustration-banana,
+.clock__assembly,
+.clock__illustration-gift {
+  animation: clockIllustrationPulse 1s ease-in-out infinite;
+}
