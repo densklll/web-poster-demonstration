@@ -285,16 +285,31 @@
   }
 
   .hero__card {
-    width: min(94vw, 100%);
+    width: min(96vw, 100%);
     max-width: 30rem;
     margin: 4.5vw auto 0;
     align-items: center;
     flex-shrink: 0;
   }
 
+  .hero__card-inner {
+    overflow: hidden;
+  }
+
+  .hero__card-bg {
+    inset: auto;
+    left: -4%;
+    top: 0;
+    width: 108%;
+    height: 100%;
+    object-fit: fill;
+    object-position: center;
+  }
+
   .hero__form {
-    padding: 5vw;
+    padding: 5vw 6vw;
     gap: 3.5vw;
+    box-sizing: border-box;
   }
 
   .hero__row {
