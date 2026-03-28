@@ -263,11 +263,7 @@
 
   .section--hero {
     top: 5.3%;
-    height: auto;
-    min-height: min(28vh, 48vw);
-    min-height: min(30dvh, 48vw);
-    box-sizing: border-box;
-    padding: 1.25dvh 0 2.75dvh;
+    height: 12.8%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -275,8 +271,7 @@
   }
 
   .hero__title {
-    width: min(96%, 96vw);
-    max-width: 32rem;
+    width: 95%;
     margin: 0 auto;
     font-size: 16.5vw;
     text-align: center;
@@ -285,31 +280,15 @@
   }
 
   .hero__card {
-    width: min(96vw, 100%);
-    max-width: 30rem;
-    margin: 4.5vw auto 0;
+    width: 90vw;
+    margin: 5vw auto 0;
     align-items: center;
     flex-shrink: 0;
   }
 
-  .hero__card-inner {
-    overflow: hidden;
-  }
-
-  .hero__card-bg {
-    inset: auto;
-    left: -4%;
-    top: 0;
-    width: 108%;
-    height: 100%;
-    object-fit: fill;
-    object-position: center;
-  }
-
   .hero__form {
-    padding: 5vw 6vw;
+    padding: 5vw;
     gap: 3.5vw;
-    box-sizing: border-box;
   }
 
   .hero__row {
