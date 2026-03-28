@@ -5,17 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <style>
       @media (prefers-reduced-motion: no-preference) {
-        html:not(.hero-title-ready) .hero__title {
-          opacity: 0;
-          transform: translateY(12px);
+        html:not(.hero-ready) .poster .section--hero {
+          opacity: 0 !important;
+          visibility: hidden !important;
+          pointer-events: none !important;
         }
       }
     </style>
     <noscript>
       <style>
-        html:not(.hero-title-ready) .hero__title {
+        html:not(.hero-ready) .poster .section--hero {
           opacity: 1 !important;
-          transform: none !important;
+          visibility: visible !important;
+          pointer-events: auto !important;
         }
       </style>
     </noscript>
@@ -389,8 +391,11 @@
 
     <script>
       (function () {
+        var done = false;
         function reveal() {
-          document.documentElement.classList.add("hero-title-ready");
+          if (done) return;
+          done = true;
+          document.documentElement.classList.add("hero-ready");
         }
         if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
           reveal();
@@ -399,7 +404,11 @@
         function schedule() {
           var run = function () {
             requestAnimationFrame(function () {
-              setTimeout(reveal, 160);
+              requestAnimationFrame(function () {
+                requestAnimationFrame(function () {
+                  setTimeout(reveal, 240);
+                });
+              });
             });
           };
           if (document.fonts && document.fonts.ready) {

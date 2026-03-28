@@ -263,7 +263,11 @@
 
   .section--hero {
     top: 5.3%;
-    height: 12.8%;
+    height: auto;
+    min-height: min(28vh, 48vw);
+    min-height: min(30dvh, 48vw);
+    box-sizing: border-box;
+    padding: 1.25dvh 0 2.75dvh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -271,7 +275,8 @@
   }
 
   .hero__title {
-    width: 95%;
+    width: min(96%, 96vw);
+    max-width: 32rem;
     margin: 0 auto;
     font-size: 16.5vw;
     text-align: center;
@@ -280,8 +285,9 @@
   }
 
   .hero__card {
-    width: 90vw;
-    margin: 5vw auto 0;
+    width: min(94vw, 100%);
+    max-width: 30rem;
+    margin: 4.5vw auto 0;
     align-items: center;
     flex-shrink: 0;
   }
