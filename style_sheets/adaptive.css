@@ -286,6 +286,10 @@
     flex-shrink: 0;
   }
 
+  .hero__card-inner {
+    aspect-ratio: 710 / 507;
+  }
+
   .hero__form {
     padding: 5vw;
     gap: 3.5vw;
