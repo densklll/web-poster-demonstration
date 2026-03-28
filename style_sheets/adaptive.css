@@ -276,12 +276,14 @@
     font-size: 16.5vw;
     text-align: center;
     line-height: 0.95;
+    flex-shrink: 0;
   }
 
   .hero__card {
     width: 90vw;
     margin: 5vw auto 0;
     align-items: center;
+    flex-shrink: 0;
   }
 
   .hero__form {

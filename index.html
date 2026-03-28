@@ -3,6 +3,22 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      @media (prefers-reduced-motion: no-preference) {
+        html:not(.hero-title-ready) .hero__title {
+          opacity: 0;
+          transform: translateY(12px);
+        }
+      }
+    </style>
+    <noscript>
+      <style>
+        html:not(.hero-title-ready) .hero__title {
+          opacity: 1 !important;
+          transform: none !important;
+        }
+      </style>
+    </noscript>
     <title>Невезец</title>
     <link rel="stylesheet" href="style_sheets/style.css" />
     <link rel="stylesheet" href="style_sheets/drag-trash.css" />
@@ -371,6 +387,35 @@
       </div>
     </div>
 
+    <script>
+      (function () {
+        function reveal() {
+          document.documentElement.classList.add("hero-title-ready");
+        }
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+          reveal();
+          return;
+        }
+        function schedule() {
+          var run = function () {
+            requestAnimationFrame(function () {
+              setTimeout(reveal, 160);
+            });
+          };
+          if (document.fonts && document.fonts.ready) {
+            document.fonts.ready.then(run).catch(run);
+          } else {
+            run();
+          }
+        }
+        if (document.readyState === "loading") {
+          document.addEventListener("DOMContentLoaded", schedule);
+        } else {
+          schedule();
+        }
+        setTimeout(reveal, 3200);
+      })();
+    </script>
     <script src="js/deco-drift.js"></script>
     <script src="js/script.js"></script>
     <script src="js/walker-robot.js"></script>
